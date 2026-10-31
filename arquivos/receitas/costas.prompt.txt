@@ -1,0 +1,2 @@
+The attached image is the FRONT view of the fictional character Mia. Generate the same character as a matching turnaround view for an image-to-3D pipeline: identical face, hair, outfit, proportions, A-pose, framing, scale, lighting and plain light-grey background (#D9D9D9). Full body head to feet, same camera height, orthographic look, no text, no logos.
+View: BACK view. We see the character from behind: back of the head with the long hair falling down the back, back of the red t-shirt, arms in the same A-pose.
