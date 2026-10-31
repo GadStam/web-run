@@ -1,0 +1,345 @@
+/* Barra de navegación */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px var(--margem);
+  color: #ffffff;
+  mix-blend-mode: normal;
+  background: linear-gradient(to bottom, rgba(11, 2, 4, 0.9) 0%, transparent 100%);
+  pointer-events: auto;
+}
+
+.nav__brand {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.nav__logo {
+  font-family: var(--display);
+  font-size: 32px;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+.nav__tagline {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cinza);
+}
+
+.nav__link {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-decoration: none;
+  border-bottom: 2px solid var(--vermelho);
+  padding-bottom: 4px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.nav__link:hover {
+  color: var(--vermelho-vivo);
+  border-color: #ffffff;
+}
+
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav__link--secundario {
+  border-bottom: 2px solid transparent !important;
+  opacity: 0.75;
+}
+
+.nav__link--secundario:hover {
+  opacity: 1;
+  border-bottom-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Hero Section Nocturna */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 100px var(--margem) 40px;
+  background: radial-gradient(circle at 50% 20%, rgba(200, 43, 20, 0.25) 0%, rgba(11, 2, 4, 0.85) 60%, var(--creme) 100%);
+  overflow: hidden;
+}
+
+.hero__title-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 3vh;
+  gap: 22px;
+}
+
+/* Título detrás del canvas 3D con brillo de reflector */
+.hero__title {
+  position: relative;
+  z-index: 0;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(64px, 17.5vw, 280px);
+  line-height: 0.82;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  text-align: center;
+  pointer-events: none;
+  user-select: none;
+  text-shadow: 0 0 60px rgba(200, 43, 20, 0.45);
+  white-space: nowrap;
+}
+
+.hero__cta-wrapper {
+  position: relative;
+  z-index: 2;
+  pointer-events: auto;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-pilula--hero {
+  height: 48px;
+  padding: 0 32px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  box-shadow: 0 12px 32px rgba(200, 43, 20, 0.6), 0 0 24px rgba(229, 34, 7, 0.4);
+}
+
+.btn-pilula--secundario {
+  height: 48px;
+  padding: 0 28px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: #ffffff;
+  box-shadow: none;
+}
+
+.btn-pilula--secundario:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: #ffffff;
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15);
+}
+
+/* Barra de Marcas / Auspiciantes oficiales */
+.marcas-strip {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 36px;
+  padding: 22px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.marcas-strip__label {
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--vermelho);
+}
+
+.marcas-strip__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px 32px;
+}
+
+.marca-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  opacity: 0.85;
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease), filter 0.25s var(--ease);
+  cursor: default;
+}
+
+.marca-item:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+  filter: drop-shadow(0 0 10px rgba(229, 34, 7, 0.6));
+}
+
+.marca-logo {
+  object-fit: contain;
+  display: block;
+  filter: brightness(1) contrast(1.1);
+}
+
+/* Escala óptica equilibrada para que ninguna marca se vea ni gigante ni minúscula */
+.marca-logo--nuala {
+  height: 26px;
+  max-width: 120px;
+}
+
+.marca-logo--suma {
+  height: 26px;
+  max-width: 105px;
+}
+
+.marca-logo--natura {
+  height: 24px;
+  max-width: 130px;
+}
+
+.marca-logo--michelob {
+  height: 38px;
+  max-width: 72px;
+}
+
+.marca-logo--matter {
+  height: 42px;
+  max-width: 50px;
+}
+
+.marca-badge {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #ffffff;
+  padding: 4px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Linha inferior à frente do canvas */
+.hero__row {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: flex-end;
+  gap: 40px;
+  margin-top: auto;
+  padding-top: 40px;
+}
+
+.hero__col-left {
+  display: flex;
+  flex-direction: column;
+  max-width: 580px;
+}
+
+.hero__headline {
+  font-family: var(--sans);
+  font-size: clamp(24px, 2.5vw, 42px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.hero__premio {
+  display: block;
+  margin-top: 10px;
+  color: var(--vermelho);
+  font-size: clamp(16px, 1.6vw, 26px);
+  letter-spacing: 0.02em;
+  font-weight: 700;
+  text-shadow: 0 0 24px rgba(200, 43, 20, 0.45);
+}
+
+.hero__fio {
+  display: flex;
+  gap: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  margin-top: 24px;
+  padding-top: 16px;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cinza);
+}
+
+.hero__fio span {
+  color: #ffffff;
+}
+
+.hero__col-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 400px;
+  justify-self: end;
+}
+
+.hero__desc {
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--tinta-dim);
+}
+
+@media (max-width: 760px) {
+  .nav__tagline {
+    display: none;
+  }
+
+  .hero {
+    padding-top: 80px;
+    padding-bottom: 28px;
+  }
+
+  .hero__title {
+    font-size: clamp(48px, 16vw, 110px);
+    white-space: normal;
+  }
+
+  .marcas-strip__list {
+    gap: 12px 20px;
+  }
+
+  .hero__row {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    background: linear-gradient(to top, var(--creme) 80%, rgba(11, 2, 4, 0.9) 90%, transparent 100%);
+    padding: 32px 0 0;
+  }
+
+  .hero__col-right {
+    justify-self: start;
+  }
+}

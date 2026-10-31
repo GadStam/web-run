@@ -1,0 +1,255 @@
+/* Seção Processo / Túnel */
+.processo {
+  position: relative;
+  z-index: 3;
+  height: 380vh;
+  background-color: var(--creme);
+  margin-top: -15vh;
+}
+
+/* Recorte chanfrado no topo */
+.processo__entalhe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 15vh;
+  background-color: var(--creme);
+  clip-path: polygon(
+    0 100%,
+    0 0,
+    calc(50% - clamp(150px, 17vw, 300px) / 2 - 3vw) 0,
+    calc(50% - clamp(150px, 17vw, 300px) / 2) 100%,
+    calc(50% + clamp(150px, 17vw, 300px) / 2) 100%,
+    calc(50% + clamp(150px, 17vw, 300px) / 2 + 3vw) 0,
+    100% 0,
+    100% 100%
+  );
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* Container do Túnel fixo com perspectiva */
+.tunel {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  perspective: 1200px;
+  background-color: var(--creme);
+}
+
+@media (max-width: 768px) {
+  .tunel {
+    perspective: 900px;
+  }
+}
+
+/* Grade de pontos com brilho central */
+.tunel__grade {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(200, 43, 20, 0.28) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+  pointer-events: none;
+}
+
+.tunel__brilho {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60vmin;
+  height: 60vmin;
+  background: radial-gradient(circle, rgba(200, 43, 20, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Aros concêntricos no túnel */
+.tunel__aro {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.tunel__aro-fino {
+  width: 48vmin;
+  height: 48vmin;
+  border: 1px solid rgba(200, 43, 20, 0.5);
+  box-shadow: 0 0 30px rgba(200, 43, 20, 0.25);
+}
+
+.tunel__aro-tracejado {
+  width: 76vmin;
+  height: 76vmin;
+  border: 1px dashed rgba(255, 255, 255, 0.25);
+}
+
+/* Centro com Kicker e Passos */
+.tunel__centro {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 10;
+  pointer-events: none;
+  width: 90vw;
+  max-width: 580px;
+  will-change: transform, opacity;
+}
+
+.tunel__kicker {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--vermelho);
+  margin-bottom: 12px;
+}
+
+.tunel__passos {
+  position: relative;
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.passo {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease), visibility 0.4s;
+}
+
+.passo.is-on {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.passo__nome {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(72px, 13vw, 210px);
+  line-height: 0.85;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 14px;
+  text-shadow: 0 0 40px rgba(200, 43, 20, 0.5);
+}
+
+.passo .small {
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--tinta-dim);
+  max-width: 400px;
+}
+
+/* Cartas de UGC em espiral 3D */
+.tunel__espaco {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  pointer-events: auto;
+}
+
+.tunel__card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(170px, 15vw, 250px);
+  aspect-ratio: 9 / 16;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 48px -10px rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(200, 43, 20, 0.35);
+  background-color: #0c0204;
+  cursor: pointer;
+  will-change: transform, opacity;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .tunel__card {
+    width: clamp(120px, 34vw, 170px);
+  }
+}
+
+.tunel__card:hover {
+  border-color: var(--vermelho-vivo);
+  box-shadow: 0 0 35px rgba(229, 34, 7, 0.6);
+}
+
+.tunel__card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s var(--ease);
+}
+
+.tunel__card:hover img {
+  transform: scale(1.08);
+}
+
+.tunel__card figcaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px 14px 12px;
+  background: linear-gradient(to top, rgba(11, 2, 4, 0.95) 0%, rgba(11, 2, 4, 0.6) 60%, transparent 100%);
+  color: #ffffff;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+/* Dica de rolagem */
+.tunel__dica {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cinza);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.tunel__dica-fio {
+  width: 1px;
+  height: 36px;
+  background-color: var(--vermelho);
+  box-shadow: 0 0 10px var(--vermelho);
+}

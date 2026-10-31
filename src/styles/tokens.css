@@ -1,0 +1,40 @@
+:root {
+  /* Paleta Nocturna CeNARD Speed Race */
+  --creme: #0b0204;                          /* Base nocturna profunda */
+  --noite: #050102;                          /* Noche cerrada */
+  --noite-elevada: #140407;                  /* Superficie oscura con tinte de tartán */
+  --tinta: #ffffff;                          /* Blanco tiza de pista */
+  --tinta-dim: rgba(255, 255, 255, 0.72);    /* Blanco secundario */
+  --cinza: #9f8f90;                          /* Gris cálido atlético */
+
+  --vermelho: #c82b14;                       /* Rojo tartán reglamentario */
+  --vermelho-vivo: #e52207;                  /* Rojo de acción e iluminación */
+  --brilho: #ff3a1e;                         /* Resplandor de reflectores */
+  --feixe: #661100;                          /* Haz de luz de atardecer */
+
+  --borda-vermelha: rgba(200, 43, 20, 0.35);
+
+  /* Tipografías del Flyer */
+  --display: 'Bebas Neue', 'General Sans', sans-serif;
+  --serif: 'Space Grotesk', sans-serif;
+  --sans: 'Space Grotesk', system-ui, sans-serif;
+
+  --margem: clamp(18px, 4.4vw, 72px);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@font-face {
+  font-family: 'General Sans';
+  src: url('/fonts/GeneralSans-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'General Sans';
+  src: url('/fonts/GeneralSans-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}

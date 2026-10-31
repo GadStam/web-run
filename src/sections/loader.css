@@ -1,0 +1,30 @@
+.loader {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background-color: var(--vermelho);
+  place-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+html.intro-on .loader {
+  display: grid;
+}
+
+.loader__count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader__num {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  font-variant-numeric: tabular-nums;
+  color: rgba(255, 255, 255, 0.85);
+  user-select: none;
+}

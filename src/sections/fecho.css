@@ -1,0 +1,175 @@
+/* Seção Fecho */
+.fecho {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--creme);
+}
+
+/* Bloco vermelho com recorte animado */
+.fecho__bloco {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 120px var(--margem) 60px;
+  color: #ffffff;
+}
+
+/* Recorte em ::before com clip-path */
+.fecho__bloco::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(circle at 50% 10%, rgba(229, 34, 7, 0.95) 0%, rgba(200, 43, 20, 0.9) 60%, rgba(102, 17, 0, 0.95) 100%);
+  clip-path: inset(var(--inset, 5vw) round var(--raio, 28px));
+  pointer-events: none;
+}
+
+/* Título Corré la Speed Race */
+.fecho__title {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(72px, 15vw, 300px);
+  line-height: 0.82;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #ffffff;
+  width: 100%;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Linha inferior de fechamento */
+.fecho__row {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+  margin-top: auto;
+  padding-top: 60px;
+}
+
+.fecho__col-left {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 480px;
+}
+
+.fecho__vagas {
+  font-family: var(--sans);
+  font-size: clamp(22px, 2.2vw, 36px);
+  font-weight: 700;
+  line-height: 1.15;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.fecho__desc {
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.fecho__col-right {
+  display: flex;
+  align-items: flex-end;
+}
+
+/* Pílula gigante */
+.fecho a.pilula {
+  width: clamp(260px, 34vw, 560px);
+  height: clamp(54px, 5.5vw, 76px);
+  background-color: #ffffff;
+  color: var(--vermelho);
+  font-family: var(--sans);
+  font-size: clamp(15px, 1.6vw, 24px);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+  transition: transform 0.35s var(--ease), background-color 0.35s var(--ease), color 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+
+.fecho a.pilula:hover {
+  transform: scale(1.03);
+  background-color: var(--noite);
+  color: #ffffff;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.8);
+}
+
+/* Rodapé */
+.rodape {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px var(--margem);
+  background-color: var(--creme);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cinza);
+}
+
+.rodape__copy {
+  font-weight: 600;
+}
+
+.rodape__aviso {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 760px) {
+  .fecho__bloco {
+    padding-top: 80px;
+    padding-bottom: 40px;
+  }
+
+  .fecho__title {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .fecho__row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 32px;
+  }
+
+  .fecho a.pilula {
+    width: 100%;
+  }
+
+  .rodape {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#c82b14" />
+    <title>SPEED RACE — Nuala Social Running Club | CeNARD 14.11</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+      /* crítico: la pantalla de apertura cubre antes de cargar el CSS */
+      html.intro-on .loader { display: grid; }
+      .loader { display: none; position: fixed; inset: 0; z-index: 100; background: #c82b14; place-items: center; }
+    </style>
+    <script>
+      (function () {
+        var d = document.documentElement;
+        d.classList.add(matchMedia('(prefers-reduced-motion: reduce)').matches ? 'rm' : 'intro-on');
+        if (matchMedia('(hover: none)').matches) d.classList.add('touch');
+      })();
+    </script>
+  </head>
+  <body>
+    <!-- 0. Abertura com carregador de progresso real -->
+    <div class="loader">
+      <div class="loader__count">
+        <span class="loader__num">000</span>
+      </div>
+    </div>
+
+    <!-- Canvas 3D fixo: Pista de Atletismo e Partículas -->
+    <canvas class="gl"></canvas>
+
+    <!-- Barra de navegação fixa com mix-blend-mode: difference -->
+    <header class="nav">
+      <a href="#topo" class="nav__brand">
+        <span class="nav__logo">SPEED RACE</span>
+        <span class="nav__tagline">Nuala Social Running Club</span>
+      </a>
+      <div class="nav__actions">
+        <a href="#equipos" class="nav__link nav__link--secundario">Buscar Equipo</a>
+        <a href="#chama" class="nav__link">Inscribir equipo</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- 1. Hero -->
+      <section class="hero" id="topo">
+        <div class="hero__title-container">
+          <h1 class="hero__title">
+            <span class="split" data-split>SPEED RACE</span>
+          </h1>
+          <div class="hero__cta-wrapper">
+            <a href="#chama" class="btn-pilula btn-pilula--hero">INSCRIBIR EQUIPO</a>
+            <a href="#equipos" class="btn-pilula btn-pilula--secundario">BUSCAR EQUIPO</a>
+          </div>
+        </div>
+
+        <div class="hero__row">
+          <div class="hero__col-left">
+            <p class="hero__headline">
+              Carrera de postas mixta 400mts.<br />
+              El atardecer del año en la pista del CeNARD.<br />
+              <span class="hero__premio">Un viaje a Chapadmalal todo incluido para el equipo ganador.</span>
+            </p>
+            <div class="hero__fio">
+              <span>/ Postas — 4 × 100m mixtas</span>
+              <span>/ CeNARD — 14 de Noviembre</span>
+            </div>
+          </div>
+          <div class="hero__col-right">
+            <p class="hero__desc">
+              Cuatro relevos a pura velocidad sobre el tartán oficial. Competencia por equipos, cronometraje electrónico y after al atardecer.
+            </p>
+          </div>
+        </div>
+
+        <div class="marcas-strip">
+          <span class="marcas-strip__label">Marcas que nos acompañan</span>
+          <div class="marcas-strip__list">
+            <div class="marca-item" title="Michelob ULTRA">
+              <img src="/img/marcas/michelob.png" alt="Michelob ULTRA" class="marca-logo marca-logo--michelob" />
+            </div>
+            <div class="marca-item" title="natura">
+              <img src="/img/marcas/natura.png" alt="natura" class="marca-logo marca-logo--natura" />
+            </div>
+            <div class="marca-item" title="Nuala">
+              <img src="/img/marcas/nuala.png" alt="Nuala" class="marca-logo marca-logo--nuala" />
+            </div>
+            <div class="marca-item" title="suma">
+              <img src="/img/marcas/suma.png" alt="suma" class="marca-logo marca-logo--suma" />
+            </div>
+            <div class="marca-item" title="MATTER">
+              <img src="/img/marcas/matter.png" alt="MATTER" class="marca-logo marca-logo--matter" />
+            </div>
+            <div class="marca-item" title="2GOOD">
+              <span class="marca-badge">2GOOD</span>
+            </div>
+            <div class="marca-item" title="AFT">
+              <span class="marca-badge">AFT</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Bloco Escuro: Noche en CeNARD y Relevos -->
+      <div class="escuro">
+        <div class="feixes">
+          <div class="feixe-luz feixe-1"></div>
+          <div class="feixe-luz feixe-2"></div>
+          <div class="feixe-luz feixe-3"></div>
+          <div class="feixe-luz feixe-4"></div>
+        </div>
+
+        <!-- Seção 1 (Pin 140%) -->
+        <section class="rosto">
+          <h2 class="rosto__title">
+            <span class="split" data-split>400 metros,</span>
+            <span class="split rosto__title-sub" data-split>pura velocidad</span>
+          </h2>
+          <div class="rosto__row">
+            <p class="rosto__headline">
+              La pista oficial del CeNARD iluminada.<br />Cada centésima de segundo cuenta en el relevo.
+            </p>
+            <div class="rosto__meta">
+              <span class="rosto__meta-dias">14.11</span>
+              <span class="rosto__meta-sub">CeNARD, Buenos Aires<br />Largada oficial 18:30 hs</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Seção 2: O que inclui (Pin 230%) -->
+        <section class="entrega">
+          <h2 class="entrega__title">
+            <span class="split" data-split>Qué incluye</span>
+            <span class="split entrega__title-sub" data-split>tu inscripción</span>
+          </h2>
+          <div class="entrega__row">
+            <ul class="entrega__lista">
+              <li style="--recuo: 0">/ Remera técnica oficial Speed Race Nuala</li>
+              <li style="--recuo: 1">/ Cronometraje por chip y jueces oficiales</li>
+              <li style="--recuo: 2">/ Premio: Viaje a Chapadmalal todo incluido (3 noches en AFT)</li>
+              <li style="--recuo: 3">/ Acceso al After & DJ x Michelob Ultra</li>
+            </ul>
+            <p class="entrega__destaque">
+              Un atardecer para dejar todo en la pista, pasar el testimonio a máxima velocidad y festejar con tu equipo.
+            </p>
+          </div>
+        </section>
+      </div>
+
+      <!-- 4. Seção Processo / Túnel 3D -->
+      <section class="processo">
+        <div class="processo__entalhe"></div>
+        <div class="tunel">
+          <div class="tunel__grade"></div>
+          <div class="tunel__brilho"></div>
+          <div class="tunel__aro tunel__aro-fino"></div>
+          <div class="tunel__aro tunel__aro-tracejado"></div>
+
+          <div class="tunel__centro">
+            <span class="tunel__kicker">La competencia</span>
+            <div class="tunel__passos">
+              <div class="passo is-on">
+                <h3 class="passo__nome" data-split>Acreditación</h3>
+                <p class="small">Entrega de dorsales, chip de cronometraje, kit oficial y charla técnica en zona de calentamiento.</p>
+              </div>
+              <div class="passo">
+                <h3 class="passo__nome" data-split>La Carrera</h3>
+                <p class="small">Postas mixtas de 400 metros sobre el tartán profesional. Adrenalina en cada pase de testimonio.</p>
+              </div>
+              <div class="passo">
+                <h3 class="passo__nome" data-split>El After</h3>
+                <p class="small">DJ set en vivo por Michelob Ultra, hidratación, premiación en podio y fiesta al atardecer.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="tunel__espaco">
+            <figure class="tunel__card">
+              <img src="/img/ugc/espelho.webp" alt="Largada en tacos" loading="eager" />
+              <figcaption>01 / Largada en tacos</figcaption>
+            </figure>
+            <figure class="tunel__card">
+              <img src="/img/ugc/cozinha.webp" alt="Pase de testimonio" loading="eager" />
+              <figcaption>02 / Pase de testimonio</figcaption>
+            </figure>
+            <figure class="tunel__card">
+              <img src="/img/ugc/rua.webp" alt="Recta principal" loading="eager" />
+              <figcaption>03 / Recta principal</figcaption>
+            </figure>
+            <figure class="tunel__card">
+              <img src="/img/ugc/carro.webp" alt="El cronómetro" loading="eager" />
+              <figcaption>04 / El cronómetro</figcaption>
+            </figure>
+            <figure class="tunel__card">
+              <img src="/img/ugc/sofa.webp" alt="Kit oficial Nuala" loading="eager" />
+              <figcaption>05 / Kit oficial Nuala</figcaption>
+            </figure>
+            <figure class="tunel__card">
+              <img src="/img/ugc/academia.webp" alt="Entrada en calor" loading="eager" />
+              <figcaption>06 / Entrada en calor</figcaption>
+            </figure>
+            <figure class="tunel__card">
+              <img src="/img/ugc/mesa.webp" alt="Festejo en equipo" loading="eager" />
+              <figcaption>07 / Festejo en equipo</figcaption>
+            </figure>
+            <figure class="tunel__card">
+              <img src="/img/ugc/parque.webp" alt="Atardecer en CeNARD" loading="eager" />
+              <figcaption>08 / Atardecer en CeNARD</figcaption>
+            </figure>
+            <figure class="tunel__card">
+              <img src="/img/ugc/cama.webp" alt="After Michelob Ultra" loading="eager" />
+              <figcaption>09 / After Michelob Ultra</figcaption>
+            </figure>
+          </div>
+
+          <div class="tunel__dica">
+            <span>Deslizá para recorrer</span>
+            <div class="tunel__dica-fio"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4.5. Bolsa de Equipos y Postas Mixtas (2M + 2H) -->
+      <section class="equipos-section" id="equipos">
+        <div class="equipos-header">
+          <span class="equipos-kicker">Comunidad Nuala & Postas</span>
+          <h2 class="equipos-title">Bolsa de Equipos</h2>
+          <p class="equipos-desc">
+            ¿Te falta gente para completar tu posta o querés sumarte a un equipo? 
+            <strong>Reglamento oficial: exactamente 2 mujeres y 2 hombres por equipo</strong>. 
+            Elegí una posta con cupo disponible o creá una nueva para que otros corredores se sumen.
+          </p>
+        </div>
+
+        <div class="equipos-toolbar">
+          <div class="equipos-filtros">
+            <button type="button" class="equipos-filtro is-active" data-filter="todos">Todas las postas</button>
+            <button type="button" class="equipos-filtro" data-filter="disponibles">Con cupos libres</button>
+            <button type="button" class="equipos-filtro" data-filter="completos">Equipos completos</button>
+          </div>
+          <button type="button" class="btn-pilula btn-crear-posta-hero" id="btn-crear-posta">
+            + Crear nueva posta
+          </button>
+        </div>
+
+        <div class="equipos-grid" id="equipos-list">
+          <!-- Renderizado dinámico desde JS con validación 2M + 2H -->
+        </div>
+      </section>
+
+      <!-- 5. Seção Fecho: Inscripción -->
+      <section class="fecho" id="chama">
+        <div class="fecho__bloco">
+          <h2 class="fecho__title">
+            <span class="split" data-split>Corré la</span>
+            <span class="split" data-split>Speed Race</span>
+          </h2>
+          <div class="fecho__row">
+            <div class="fecho__col-left">
+              <p class="fecho__vagas">Cupos limitados por equipos.</p>
+              <p class="fecho__desc">
+                Inscribí a tu posta de 4 corredores mixta. Acreditación confirmada y kits técnicos asegurados para todos los integrantes.
+              </p>
+            </div>
+            <div class="fecho__col-right">
+              <a class="pilula" href="mailto:inscripciones@nualarun.com">inscribir equipo</a>
+            </div>
+          </div>
+        </div>
+
+        <footer class="rodape">
+          <span class="rodape__copy">© 2026 Nuala Social Running Club · CeNARD Speed Race</span>
+          <span class="rodape__aviso">Sponsors oficiales: Michelob ULTRA · 2GOOD · natura MATTER · suma</span>
+        </footer>
+      </section>
+    </main>
+
+    <!-- Modal para Sumarse o Crear Posta -->
+    <div class="modal-overlay" id="equipos-modal">
+      <div class="modal-box">
+        <div class="modal-header">
+          <div>
+            <h3 class="modal-title" id="modal-title">Sumarte a la Posta</h3>
+            <p class="modal-sub" id="modal-sub">Completá tus datos para ocupar tu lugar.</p>
+          </div>
+          <button type="button" class="modal-close-btn modal-close" aria-label="Cerrar modal">&times;</button>
+        </div>
+
+        <form class="modal-form" id="equipos-form">
+          <div class="modal-field" id="campo-nombre-equipo" style="display: none;">
+            <label class="modal-label" for="input-equipo">Nombre de la Posta / Equipo</label>
+            <input type="text" id="input-equipo" class="modal-input" placeholder="Ej: Rayos del CeNARD" />
+          </div>
+
+          <div class="modal-field">
+            <label class="modal-label" for="input-nombre">Tu Nombre y Apellido</label>
+            <input type="text" id="input-nombre" class="modal-input" placeholder="Ej: Sofía Benítez" required />
+          </div>
+
+          <div class="modal-field">
+            <label class="modal-label" for="input-tel">Teléfono / WhatsApp</label>
+            <input type="tel" id="input-tel" class="modal-input" placeholder="Ej: +54 9 11 1234-5678" required />
+          </div>
+
+          <div class="modal-field">
+            <label class="modal-label" for="input-email">Email (para avisarte cuando se sumen o completen la posta)</label>
+            <input type="email" id="input-email" class="modal-input" placeholder="ejemplo@email.com" required />
+          </div>
+
+          <div class="modal-field">
+            <label class="modal-label">Género (Reglamento: 2 Mujeres + 2 Hombres)</label>
+            <div class="genero-pills">
+              <label class="genero-pill" id="label-genero-mujer">
+                <input type="radio" name="genero" id="genero-mujer" value="mujer" checked />
+                <span>🏃‍♀️ Mujer</span>
+              </label>
+              <label class="genero-pill" id="label-genero-hombre">
+                <input type="radio" name="genero" id="genero-hombre" value="hombre" />
+                <span>🏃‍♂️ Hombre</span>
+              </label>
+            </div>
+            <p class="modal-regla-aviso">
+              ⚡ Si los cupos de un género ya están completos en este equipo, esa opción quedará deshabilitada para cumplir la regla 2M + 2H.
+            </p>
+          </div>
+
+          <button type="submit" class="btn-pilula modal-btn-submit">
+            Confirmar mi lugar en la posta
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

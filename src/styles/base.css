@@ -1,0 +1,90 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: var(--creme);
+  color: var(--tinta);
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  background-color: var(--creme);
+  color: var(--tinta);
+  min-height: 100vh;
+  overflow-x: clip;
+}
+
+html.intro-on body {
+  overflow: hidden;
+}
+
+canvas.gl {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Split characters */
+.split {
+  display: inline-block;
+}
+
+.split .ch {
+  display: inline-block;
+  opacity: 0.08;
+  will-change: opacity;
+}
+
+html.rm .split .ch {
+  opacity: 1 !important;
+}
+
+html.rm .passo:not(:first-child) {
+  display: none !important;
+}
+
+/* Botones con estilo atlético nocturno */
+.btn-pilula, a.pilula {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  padding: 0 24px;
+  background-color: var(--vermelho);
+  color: #ffffff;
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 24px rgba(200, 43, 20, 0.45);
+  transition: transform 0.25s var(--ease), background-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+
+.btn-pilula:hover, a.pilula:hover {
+  transform: translateY(-2px);
+  background-color: var(--vermelho-vivo);
+  box-shadow: 0 12px 32px rgba(229, 34, 7, 0.65);
+}
